@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Annual_Compliance_Declaration.Models.DetailMenuModel>
+
+<div>
+    <div class="dataTables_wrapper form-inline no-footer">
+        <div class="ui-jqgrid-hdiv ui-state-default">
+            <div class="ui-jqgrid-hbox">
+                <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dynamic-table_info">
+                    <thead>
+                        <tr role="row" style="font-size:12px">
+                            <th tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1">No</th>
+                            <th tabindex="1" aria-controls="dynamic-table" rowspan="1" colspan="1">ID Employee</th>
+                            <th tabindex="2" aria-controls="dynamic-table" rowspan="1" colspan="1">Name</th>
+                            <th tabindex="5" aria-controls="dynamic-table" rowspan="1" colspan="1">Entity</th>
+                            <th tabindex="6" aria-controls="dynamic-table" rowspan="1" colspan="1">Role</th>
+                            <th tabindex="7" aria-controls="dynamic-table" rowspan="1" colspan="1">Menu</th>
+                            <th rowspan="1" colspan="1" aria-label=""></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr style="font-size:12px">
+                                <td>
+                                    @Html.DisplayFor(m => item.No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.ID_Employee)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Entity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Role)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Menu)
+                                </td>
+                                <td>
+                                    <div class="hidden-sm hidden-xs action-buttons">
+                                        <a class="red" href="#">
+                                            @Html.ActionLink("Delete", "DeleteMenu", new { menu = item.Menu, name = item.Name }, new { @onclick = "return confirm('Are you sure you want to delete this record?');" })
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

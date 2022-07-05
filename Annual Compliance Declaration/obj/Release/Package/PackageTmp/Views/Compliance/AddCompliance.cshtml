@@ -1,0 +1,573 @@
+﻿@*Snippet*@
+@model Annual_Compliance_Declaration.Models.Compliance
+@using (Html.BeginForm("AddCompliance", "Compliance", FormMethod.Post))
+{
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">Admin</a>
+                </li>
+                <li class="active">Add Declaration</li>
+            </ul><!-- /.breadcrumb -->
+            @*<div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div>*@<!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="ace-settings-container" id="ace-settings-container">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="ace-icon fa fa-cog bigger-130"></i>
+                </div>
+
+                <div class="ace-settings-box clearfix" id="ace-settings-box">
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <div class="pull-left">
+                                <select id="skin-colorpicker" class="hide">
+                                    <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                </select><div class="dropdown dropdown-colorpicker"><a data-toggle="dropdown" class="dropdown-toggle"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div>
+                            </div>
+                            <span>&nbsp; Choose Skin</span>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off">
+                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off">
+                            <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off">
+                            <label class="lbl" for="ace-settings-add-container">
+                                Inside
+                                <b>.container</b>
+                            </label>
+                        </div>
+                    </div><!-- /.pull-left -->
+
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off">
+                            <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off">
+                            <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off">
+                            <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                        </div>
+                    </div><!-- /.pull-left -->
+                </div><!-- /.ace-settings-box -->
+            </div><!-- /.ace-settings-container -->
+
+            <div class="page-header">
+                <h1>
+                    Declaration
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Add Social Media Declaration
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;"> Person Number </label>
+
+                                    <div class="col-sm-9">
+                                        @Html.TextBox("EmployeeID", null, new { id = "EmployeeID", @class = "col-xs-10 col-sm-5", @placeholder = "EmployeeID", @readonly = "readonly" })
+                                        @*<input type="text" id="NIK" name="NIK" placeholder="EmployeeID" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeID" disabled="disabled">*@
+                                        @*<input type="text" id="NIK" name="NIK" placeholder="NIK" class="col-xs-10 col-sm-5" style="width: 110px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;"> Name </label>
+
+                                    <div class="col-sm-9">
+                                        @Html.TextBox("EmployeeName", null, new { id = "EmployeeName", @class = "col-xs-10 col-sm-5", @placeholder = "EmployeeName", @readonly = "readonly" })
+                                        @*<input type="text" id="EmplName" name="EmplName" placeholder="EmployeeName" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeName" disabled="disabled">*@
+                                        @*<input type="text" id="Name" name="Name" placeholder="Name" class="col-xs-10 col-sm-5" style="width: 300px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;">Entity</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.EntityID, Model.Entity, new { id = "Entity", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.EntityID)
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;">Department</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.DepartmentID, Model.Department, new { id = "Dept", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.DepartmentID)
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;">Worker Type</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.WorkTypeID, Model.WorkType, new { id = "WorkTypeID", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.WorkTypeID)
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 150px;">Assignment Name</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.AssignNameID, Model.AssignName, new { id = "AssignName", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.AssignNameID)
+                                    </div>
+                                </div><br /><br />
+                                <br /><br />
+
+                                <div class="table-header">
+                                    <b>Surat Pernyataan Karyawan Penggunaan Media Online<br /></b>
+                                    <i>Integrity Declaration to the Employee’s Online Media Utilization</i>
+                                </div><br />
+                                
+                                    <br />
+                                    <b>@Session["Entity"].ToString();</b><br />
+                                    <i>@Session["Entity"].ToString();</i><br /><br />
+                                <div style="text-justify:auto">
+                                    <B>
+                                        Sebagai karyawan Perusahaan, Saya, @Session["UserID"].ToString(), memiliki <br />
+                                        tanggung jawab untuk menjunjung standar etika tertinggi, dengan juga mempertimbangkan hukum<br />
+                                        dan peraturan yang berlaku, termasuk seluruh peraturan yang ditetapkan oleh Perusahaan <br />
+                                        (selanjutnya disebut “Peraturan”), dalam penggunaan media online pribadi, dalam hal ini situs<br />
+                                        pribadi, blog dan/atau media sosial.<br />
+                                    </B>
+
+                                    <i>
+                                        As the employee of the Company, I, @Session["UserID"].ToString(), am <br />
+                                        responsible to carry on the highest ethical standard, by also taking into account the prevailing law <br />
+                                        and regulation, including the Company’s regulations (hereinafter referred to as “Regulations”), in <br />
+                                        the utilization of my own personal online media, which in this case includes personal websites, blogs, <br />
+                                        and/or social media. <br />
+                                    </i>
+
+                                    <br /><br />
+                                    <b>Oleh karena itu, saya tidak akan:<br /></b>
+                                    <i>Therefore, I will not:<br /></i>
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        1. Mempublikasikan informasi / data / pernyataan / pendapat / gambar yang bertentangan dengan <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peraturan, dengan atau tanpa mengaitkannya secara langsung kepada Perusahaan, Mitra Usaha <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dan Nasabah.<br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                            1. Post information/ data/ statement/ opinion/ picture which violating the Regulations, with or <br />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without directly associating it to the Company, the Company’s Business Partners and <br />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customers.
+                                        
+                                    </i><br /><br />
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        2. Mempublikasikan informasi / data / pernyataan / pendapat / gambar yang bersifat negatif terkait <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dengan suku, agama, ras, politik dan golongan sedemikian sehingga dapat menciderai atau <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dikaitkan dengan Perusahaan.<br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        2. Post negative information/ data/ statement/ opinion/ picture, related to ethnic, religion, race, <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;politic, and social groups in a way so that it can hurt or associated with the Company.<br /><br />
+                                    </i>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        3. Menggunakan kalimat dan bahasa yang tidak sopan, termasuk mengutarakan pernyataan yang <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mengandung unsur provokatif sedemikian sehingga dapat menciderai atau dikaitkan dengan <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perusahaan.<br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        3. Use impolite words and language, including declaring statement with provocative message, in <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a way so that it can hurt or associated with the Company.<br /><br />
+                                    </i>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        4. Melakukan publikasi, diskusi dan membagikan informasi / data / pernyataan / pendapat / <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gambar yang terkait dengan dan / atau dimiliki oleh Perusahaan, yang tidak dimaksudkan untuk <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diketahui umum, tidak benar dan / atau dengan merendahkan pihak lain.<br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        4. Post, discuss, and share information/ data/ statement/ opinion/ picture that is related to and/or <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owned by the Company and which is categorized as non-public information, incorrect, and/or <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depreciating other parties.<br /><br />
+                                    </i>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        5. Melakukan publikasi informasi / data / pernyataan / pendapat / gambar yang terkait dengan dan / <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atau dimiliki oleh Perusahaan, tanpa mematuhi kebijakan privasi data, undang- undang dan <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;peraturan lainnya terkait hak cipta dan kekayaan intelektual.<br /><br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        5. Post information/ data/ statement/ opinion/ picture related to and/or owned by the Company, <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;without adherence to the data privacy policy, copyright, and other intellectual property laws <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and regulations.<br /><br />
+                                    </i>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        6. Mempublikasikan informasi / data / pernyataan / pendapat / gambar yang terkait dengan <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perusahaan tanpa menjelaskan bahwa pandangan tersebut merupakan pandangan pribadi, dan <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bukan merupakan pandangan Perusahaan.<br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        6. Post information/ data/ statement/ opinion/ picture related to the Company without explaining <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that the view is a personal view, not the Company’s stance.<br /><br />
+                                    </i>
+
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>
+                                        7. Menggunakan media sosial dengan cara tertentu yang mengganggu pekerjaan, tanggung jawab, <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atau komitmen kepada pelanggan. <br />
+                                    </b>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<i>
+                                        7. Use social media in a way that interfere with my job, responsibility, or commitment to our <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customers.<br /><br /><br />
+                                    </i>
+
+                                    <b>
+                                        Saya akan menginformasikan kepada atasan langsung atau kepala departemen saya atau departemen <br />
+                                        komunikasi apabila saya menemukan topik atau posting di media sosial yang berpotensi dapat <br />
+                                        menciderai reputasi merek AXA dan/atau Perusahaan dan memerlukan perhatian segera dari <br />
+                                        Perusahaan. <br />
+                                    </b>
+                                    <i>
+                                        I will inform my direct manager or head of department or communication department if I happen <br />
+                                        upon topic(s) or posting(s) in social media which potentially can hurt AXA’s brand and/or the <br />
+                                        Company’s reputation and require the Company’s immediate attention.
+                                    </i>
+                                    <br /><br />
+                                    <b>
+                                        Apabila saya melanggar isi dari Surat Pernyataan ini, maka saya akan bertanggung jawab dan <br />
+                                        Perusahaan memiliki hak untuk memberikan sanksi dengan mengacu kepada Peraturan yang berlaku.<br />
+                                    </b>
+                                    <i>
+                                        If I violate this Integrity Declaration, I am willing to take the responsibility and the Company has <br />
+                                        the right to put sanctions referring to the prevailing Regulation.
+                                    </i>
+                                </div>
+                                    
+                                    @*@{
+                                            string Disabled = "";
+                                            if (Model.Disabled == true)
+                                            {
+                                                Disabled = "disable";
+                                            }
+                                        }*@
+                                    <br /><br />
+                                    <div style="margin-left:15px">
+                                        <button class="btn btn-sm btn-success" type="submit" name="submit" id="Submit" value="Submit" disabled="@Model.Disabled" style="margin-left:100px; height:40px; width:100px">
+                                            Submit
+                                        </button>
+                                        <button class="btn navbar-btn" type="submit" name="submit" id="back" value="Back" style="height:40px; width:100px; margin-left:30px; ">
+                                            Back
+                                        </button>
+                                        <button class="btn navbar-btn" type="submit" name="submit" id="Download" value="Download" disabled="@Model.DisabledDOWNLOAD" style="height:40px; width:100px; margin-left:30px; ">
+                                            Download
+                                        </button>
+                                    </div><br />
+                                    <div class="col-xs-12">
+                                        @Html.Raw(TempData["messageRequest"])
+                                        @Html.Raw(TempData["SuccessRequest"])
+                                        @Html.Raw(TempData["ErrorRequest"])
+                                        <b><font color="Red">@Html.Raw(TempData["CountData"])</font></b>
+                                    </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/assets/js/jquery-2.1.4.min.js"></script>
+@*<script src="~/assets/js/chosen.jquery.min.js"></script>*@
+@*<script src="~/assets/js/ace.min.js"></script>*@
+
+<script type="text/javascript">
+    $("#CheckNoPer").change(function () {
+        if (this.checked) {
+            document.getElementById("DivComment2").style.display = "inline";
+            $("#CheckYesPer").prop("checked", false);
+        } else {
+            var Comment = document.getElementById("Comment").value;
+            document.getElementById("DivComment2").style.display = "none";
+            $("#CheckYesPer").prop("checked", false);
+            if (document.getElementById("Comment").value != "")
+            {
+                document.getElementById("Comment").value = Comment;
+            }
+            else
+            {
+                document.getElementById("Comment").value = "";
+            }
+        }
+    });
+
+    $("#CheckYesPer").change(function () {
+        if (this.checked) {
+            debugger;
+            var Comment = document.getElementById("Comment").value;
+            document.getElementById("DivComment2").style.display = "none";
+            $("#CheckNoPer").prop("checked", false);
+            if (document.getElementById("Comment").value != "") {
+                document.getElementById("Comment").value = Comment;
+            }
+            else {
+                document.getElementById("Comment").value = "";
+            }
+        } else {
+            $("#CheckNoPer").prop("checked", false);
+        }
+    });
+
+    $("#CheckNoConf").change(function () {
+        if (this.checked) {
+            var Comment = document.getElementById("CommentConf").value;
+            document.getElementById("DivCommentConf2").style.display = "none";
+            $("#CheckYesConf").prop("checked", false);
+            if (document.getElementById("CommentConf").value != "") {
+                document.getElementById("CommentConf").value = Comment;
+            }
+            else {
+                document.getElementById("CommentConf").value = "";
+            }
+        } else {
+            document.getElementById("DivCommentConf2").style.display = "inline";
+            $("#CheckYesConf").prop("checked", false);
+        }
+    });
+
+    $("#CheckYesConf").change(function () {
+        if (this.checked) {
+            document.getElementById("DivCommentConf2").style.display = "inline";
+            $("#CheckNoConf").prop("checked", false);
+        } else {
+            var Comment = document.getElementById("CommentConf").value;
+            $("#CheckNoConf").prop("checked", false);
+            if (document.getElementById("CommentConf").value != "") {
+                document.getElementById("CommentConf").value = Comment;
+            }
+            else {
+                document.getElementById("CommentConf").value = "";
+            }
+        }
+    });
+</script>
+
+<script>
+        $(function() {
+
+            $(".MyTreeView").find(":checkbox").change(function() {
+                //check or uncheck childs
+                var nextele = $(this).closest("table").next()[0];
+                if (nextele && nextele.tagName == "DIV") {
+                    $(nextele).find(":checkbox").prop("checked", $(this).prop("checked"));
+
+                }
+                //check nodes all with the recursive method
+                CheckChildNodes($(".MyTreeView").find(":checkbox").first());
+
+            });
+            //method check filial nodes
+            function CheckChildNodes(Parentnode) {
+
+                var nextele = $(Parentnode).closest("table").next()[0];
+
+                if (nextele && nextele.tagName == "DIV") {
+                    $(nextele).find(":checkbox").each(function() {
+                        CheckChildNodes($(this));
+                    });
+
+                    if ($(nextele).find("input:checked").length == 0) {
+                        $(Parentnode).removeAttr("checked");
+                    }
+                    if ($(nextele).find("input:checked").length > 0) {
+                        $(Parentnode).prop("checked", "checked");
+                    }
+
+                }
+                else { return; }
+
+            }
+
+        })
+</script>
+<script type="text/javascript">
+        (function($) {
+            $.widget("custom.combobox", {
+                _create: function() {
+                    this.wrapper = $("<span>")
+          .addClass("custom-combobox")
+          .insertAfter(this.element);
+
+                    this.element.hide();
+                    this._createAutocomplete();
+                    this._createShowAllButton();
+                },
+
+                _createAutocomplete: function() {
+                    var selected = this.element.children(":selected"),
+          value = selected.val() ? selected.text() : "";
+
+                    this.input = $("<input>")
+          .appendTo(this.wrapper)
+          .val(value)
+          .attr("title", "")
+          .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+          .autocomplete({
+              delay: 0,
+              minLength: 0,
+              source: $.proxy(this, "_source")
+          })
+          .tooltip({
+              tooltipClass: "ui-state-highlight"
+          });
+
+                    this._on(this.input, {
+                        autocompleteselect: function(event, ui) {
+                            ui.item.option.selected = true;
+                            this._trigger("select", event, {
+                                item: ui.item.option
+                            });
+                        },
+
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                },
+
+                _createShowAllButton: function() {
+                    var input = this.input,
+          wasOpen = false;
+
+                    $("<a>")
+          .attr("tabIndex", -1)
+          .attr("title", "Show All Items")
+          .tooltip()
+          .appendTo(this.wrapper)
+          .button({
+              icons: {
+                  primary: "ui-icon-triangle-1-s"
+              },
+              text: false
+          })
+          .removeClass("ui-corner-all")
+          .addClass("custom-combobox-toggle ui-corner-right")
+          .mousedown(function() {
+              wasOpen = input.autocomplete("widget").is(":visible");
+          })
+          .click(function() {
+              input.focus();
+
+              // Close if already visible
+              if (wasOpen) {
+                  return;
+              }
+
+              // Pass empty string as value to search for, displaying all results
+              input.autocomplete("search", "");
+          });
+                },
+
+                _source: function(request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                    response(this.element.children("option").map(function() {
+                        var text = $(this).text();
+                        if (this.value && (!request.term || matcher.test(text)))
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }));
+                },
+
+                _removeIfInvalid: function(event, ui) {
+
+                    // Selected an item, nothing to do
+                    if (ui.item) {
+                        return;
+                    }
+
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+                    this.element.children("option").each(function() {
+                        if ($(this).text().toLowerCase() === valueLowerCase) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+
+                    // Found a match, nothing to do
+                    if (valid) {
+                        return;
+                    }
+
+                    // Remove invalid value
+                    this.input
+          .val("")
+          .attr("title", value + " didn't match any item")
+          .tooltip("open");
+                    this.element.val("");
+                    this._delay(function() {
+                        this.input.tooltip("close").attr("title", "");
+                    }, 2500);
+                    this.input.data("ui-autocomplete").term = "";
+                },
+
+                _destroy: function() {
+                    this.wrapper.remove();
+                    this.element.show();
+                }
+            });
+        })(jQuery);
+
+        $(function() {
+            $("#Dept").combobox();
+            $("#toggle").click(function() {
+                $("#Dept").toggle();
+            });
+        });
+</script>
+<link href="~/assets/css/Drop.css" rel="stylesheet" />
+<link href="~/assets/js/jquery.alerts.css" rel="stylesheet" />
+<script src="~/assets/js/jquery.alerts.js"></script>
+<script src="~/assets/js/Jquery.min.js"></script>

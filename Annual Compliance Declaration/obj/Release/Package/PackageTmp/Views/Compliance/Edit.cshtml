@@ -1,0 +1,684 @@
+﻿@model Annual_Compliance_Declaration.Models.Compliance
+@using (Html.BeginForm("Edit", "Compliance", FormMethod.Post))
+{
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">Admin</a>
+                </li>
+                <li class="active">Add Annual Compliance</li>
+            </ul><!-- /.breadcrumb -->
+            @*<div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div>*@<!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="ace-settings-container" id="ace-settings-container">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="ace-icon fa fa-cog bigger-130"></i>
+                </div>
+
+                <div class="ace-settings-box clearfix" id="ace-settings-box">
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <div class="pull-left">
+                                <select id="skin-colorpicker" class="hide">
+                                    <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                </select><div class="dropdown dropdown-colorpicker"><a data-toggle="dropdown" class="dropdown-toggle"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div>
+                            </div>
+                            <span>&nbsp; Choose Skin</span>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off">
+                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off">
+                            <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off">
+                            <label class="lbl" for="ace-settings-add-container">
+                                Inside
+                                <b>.container</b>
+                            </label>
+                        </div>
+                    </div><!-- /.pull-left -->
+
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off">
+                            <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off">
+                            <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off">
+                            <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                        </div>
+                    </div><!-- /.pull-left -->
+                </div><!-- /.ace-settings-box -->
+            </div><!-- /.ace-settings-container -->
+
+            <div class="page-header">
+                <h1>
+                    Compliance
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Add Annual Compliance
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102px;"> Person Number </label>
+
+                                    <div class="col-sm-9">
+                                        @Html.TextBox("EmployeeID", null, new { id = "EmployeeID", @class = "col-xs-10 col-sm-5", @placeholder = "EmployeeID", @readonly = "readonly" })
+                                        @*<input type="text" id="NIK" name="NIK" placeholder="EmployeeID" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeID" disabled="disabled">*@
+                                        @*<input type="text" id="NIK" name="NIK" placeholder="NIK" class="col-xs-10 col-sm-5" style="width: 110px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102px;"> Name </label>
+
+                                    <div class="col-sm-9">
+                                        @Html.TextBox("EmployeeName", null, new { id = "EmployeeName", @class = "col-xs-10 col-sm-5", @placeholder = "EmployeeName", @readonly = "readonly" })
+                                        @*<input type="text" id="EmplName" name="EmplName" placeholder="EmployeeName" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeName" disabled="disabled">*@
+                                        @*<input type="text" id="Name" name="Name" placeholder="Name" class="col-xs-10 col-sm-5" style="width: 300px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Entity</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.EntityID, Model.Entity, new { id = "Entity", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.EntityID)    
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Department</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.DepartmentID, Model.Department, new { id = "Dept", @class = "form-control", @disabled = "disabled", @readonly = "readonly" })
+                                        @Html.HiddenFor(model => model.DepartmentID)
+                                    </div>
+                                </div><br /><br />
+                                <br /><br />
+
+                                <div class="table-header">
+                                    Annual Compliance Declaration
+                                </div><br />
+                                <div>
+                                    <b>AXA Group Standards and other Company Regulations</b><br /><br />
+                                    This declaration is for you to confirm that you have read and understood : <br /><br />
+                                    <ol style="margin-left:45px">
+                                        <li>
+                                            The AXA Group Standards <a href="/annual_compliance/report/Group Standards 2019 - COMPLETE.pdf" target="_blank">(Link File),</a> and PT Mandiri AXA General Insurance's prevailing, <br />
+                                            Regulations, including but not limited to :
+                                        </li>
+                                    </ol>
+                                    <ol type="a" style="margin-left:65px">
+                                        @*<li>The Compliance and Ethic Code <a href="/report/AXA Compliance and Ethics Code ENG.pdf" download="w3logo">Link</a></li>*@
+                                        <li>The Compliance and Ethic Code <a href="/annual_compliance/report/AXA Compliance and Ethics Code ENG.pdf" target="_blank">(Link File),</a></li>
+                                        <li>Anti-Corruption Code of Conduct</li>
+                                        <li>Social Media Declaration <a href="/annual_compliance/report/App 6 - ID HR 1.01 - Social Media Declaration.pdf" target="_blank">(Link File),</a></li>
+                                        <li>and Business Travel Policy</li>
+                                    </ol>
+                                    You confirm that you do act in accordance with the policies and guidelines described in the <br />
+                                    Standards and Regulations. <br /><br />
+                                    <i><font color="#251073"><b>Standar AXA Grup dan Peraturan Perusahaan lainnya</b></font></i><br /><br />
+                                    <i><font color="#251073">Pernyataan untuk Karyawan ini adalah untuk menyatakan bahwa Anda telah membaca dan</font></i><br />
+                                    <i><font color="#251073">mengerti :</font></i><br /><br />
+                                    <ol style="margin-left:45px">
+                                        <li style="font-style: italic;">
+                                            <font color="#251073">
+                                                Standar AXA Grup dan Peraturan yang berlaku di PT Mandiri AXA General Insurance, termasuk, <br />
+                                                namun tidak terbatas pada :
+                                            </font>
+                                        </li>
+                                    </ol>
+                                    <ol type="a" style="margin-left:65px">
+                                        <li style="font-style: italic;"><font color="#251073">Kode Etik dan Kepatuhan,</font></li>
+                                        <li style="font-style: italic;"><font color="#251073">Kode Etik Anti Korupsi,</font></li>
+                                        <li style="font-style: italic;"><font color="#251073">Deklarasi Media Sosial,</font></li>
+                                        <li style="font-style: italic;"><font color="#251073">dan Kebijakan Perjalanan Bisnis.</font></li>
+                                    </ol>
+                                    <i><font color="#251073">Dan Anda menyatakan bahwa Anda telah berperilaku sesuai dengan peraturan dan kebijakan </font></i><br />
+                                    <i><font color="#251073">yang tertulis di dalam Standar dan Peraturan tersebut. </font></i><br /><br /><br />
+                                    <b><font color="blue">I confirm that I have read and understood the </font></b><b>AXA Group Standards and other </b><br />
+                                    <b>Company Regulations. </b><br /><br />
+                                    <i>
+                                        <font color="#251073">
+                                            <b>
+                                                Saya menyatakan bahwa saya sudah membaca dan mengerti Standar AXA Grup dan <br />
+                                                Peraturan Perusahaan lainnya.
+                                            </b>
+                                        </font>
+                                    </i><br /><br />
+
+                                    <b><font color="blue">I confirm that I do act in accordance with the policies and guidelines described in the </font></b><br />
+                                    <b>AXA Group Standards and other Company Regulations. </b><br /><br />
+                                    <i>
+                                        <font color="#251073">
+                                            <b>
+                                                Saya menyatakan bahwa saya berperilaku sesuai dengan peraturan dan kebijakan <br />
+                                                yang tertulis dalam Standar AXA Grup dan Peraturan Perusahaan lainnya tersebut.
+                                            </b>
+                                        </font>
+                                    </i><br />
+                                </div><br />
+                                <div class="form-group">
+                                    <label style="padding-left:50px;">
+                                        @{
+                                            string Vis3 = "";
+                                            if (Model.CheckNoPer == true)
+                                            {
+                                                Vis3 = "true";
+                                            }
+                                            else
+                                            {
+                                                Vis3 = "false";
+                                            }
+                                        }
+                                        @{
+                                            string Vis4 = "";
+                                            if (Model.CheckYesPer == true)
+                                            {
+                                                Vis4 = "true";
+                                            }
+                                            else
+                                            {
+                                                Vis4 = "false";
+                                            }
+                                        }
+                                        <b>@Html.CheckBox("CheckYesPer", @Model.CheckYesPer == true ? true : false, new { id = "CheckYesPer" }) <font color="black">Yes</font> / <font color="#251073"><i>Ya</i></font></b><br /><br />
+                                        @Html.CheckBox("CheckNoPer", @Model.CheckNoPer == true ? true : false, new { id = "CheckNoPer" }) <b><font color="black">No</font> / <font color="#251073"><i>Tidak</i></font></b>
+                                        @* <b>@Html.Label("CheckYesBehaveMessage", @Html.LabelFor(m=>m.labelvalue, Model.labelvalue) , new { id = "CheckYesBehaveMessage", @class = "col-xs-10 col-sm-5" }) )</b>*@
+                                        &nbsp;
+                                        <b><font color="Red">@Model.CheckYesPernMessage</font></b>
+                                    </label>
+                                    <br />
+                                </div><br />
+                                <div>
+                                    Please provide the reason(s) if the response is <font color="black">“No”.</font> Otherwise, entire “N/A” in the comment box:<br /><br />
+                                    <i>
+                                        <font color="blue">
+                                            Mohon memberikan alasannya jika jawaban adalah “Tidak”. Jika bukan, silahkan memberikan <br />
+                                            jawaban “N/A” di kolom komentar:
+                                        </font>
+                                    </i>
+                                </div>
+                                <br /><br />
+                                <div class="form-group" id="DivComment2" style="@Model.DivComment2">
+                                    @if (Model.CheckNoPer == true)
+                                    {
+                                        <div class="form-group" id="DivComment" style="display:inline">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Comment</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextArea("Comment", null, new { id = "Comment", style = "width: 300px; height:100px;" })
+                                                @*<textarea id="Comment" name="Comment" placeholder="Comment" class="col-xs-10 col-sm-5" />*@
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group" id="DivComment" style="display:inline">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Comment</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextArea("Comment", null, new { id = "Comment", style = "width: 300px; height:100px;" })
+                                                @*<textarea id="Comment" name="Comment" placeholder="Comment" class="col-xs-10 col-sm-5" />*@
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <br /><br /><br /><br /><br /><br /><br /><br />
+                                <div>
+                                    <b>PT Mandiri AXA General Insurance Conflicts of Interest Policy</b><br /><br />
+                                    <b>PT Mandiri AXA General Insurance Conflicts of Interest Policy</b> requires employees to declare<br />
+                                    their conflicts of interest, if any. A conflict of interest is when your personal interests interfere<br />
+                                    with, may interfere with or have the appearance of interfering with, the business interests of AXA<br />
+                                    and its customers. Personal interests can be personal relationship, business or financial interests.<br />
+                                    A conflict of interest may make it difficult for you to perform, or be seen to perform, your duties <br />
+                                    objectively. <br /><br />
+                                    <font color="#251073"><i><b>Kebijakan Konflik Kepentingan PT Mandiri AXA General Insurance</b></i></font><br /><br />
+                                    <font color="#251073"><i><b>Kebijakan Konflik Kepentingan PT Mandiri AXA General Insurance</b></i></font>
+                                    <i>
+                                        <font color="#251073">&nbsp;mewajibkan semua karyawan</font> <br />
+                                        <font color="#251073">untuk melaporkan apabila mereka memiliki konflik kepentingan. Konflik kepentingan terjadi pada</font><br />
+                                        <font color="#251073">saat kepentingan pribadi Anda telah, atau mungkin, atau dapat menghasilkan persepsi bahwa</font><br />
+                                        <font color="#251073">kepentingan tersebut mengganggu kepentingan bisnis AXA dan nasabahnya. Kepentingan pribadi</font><br />
+                                        <font color="#251073">dapat berupa hubungan personal, kepentingan bisnis atau finansial. Konflik kepentingan dapat</font><br />
+                                        <font color="#251073">membuat Anda mengalami kesulitan dalam melakukan tugas Anda secara objektif, atau membuat</font><br />
+                                        <font color="#251073">Anda terlihat seperti tidak melaksanakan tugas Anda secara objektif.</font>
+                                    </i><br />
+                                </div>
+                                <br />
+                                <div style="margin-left:90px">
+                                    <b>Conflict of Interest Declaration</b><br /><br />
+                                    A conflict of interest arises where a decision maker has responsibilities or duties to more <br />
+                                    than one party and his or her decision puts the interests of one of those parties before <br />
+                                    the other. <br /><br />
+                                    Conflicts of interest can be personal or professional. In the following example a personal<br />
+                                    interest conflicts with a professional interest: An employee who is a member of a<br />
+                                    particular retirement savings plan (personal interest)  is responsible for making a decision<br />
+                                    about whether members of that superannuation fund should be compensated for an <br />
+                                    error that occurred (professional interest). <br /><br />
+                                    <b><font color="#251073"><i>Pernyataan Konflik Kepentingan</i></font><br /><br /></b>
+                                    <font color="#251073"><i>Konflik kepentingan terjadi ketika seorang pembuat keputusan memiliki tanggung jawab</i></font> <br />
+                                    <font color="#251073"><i>atau tugas terhadap lebih dari satu pihak dan keputusan orang tersebut akan</i></font><br />
+                                    <font color="#251073"><i>mengutamakan kepentingan salah satu pihak dari pihak yang lain.</i></font><br /><br />
+                                    <font color="#251073"><i>Konflik kepentingan dapat berupa personal atau profesional. Sesuai dengan contoh</i></font> <br />
+                                    <font color="#251073"><i>berikut ini, kepentingan personal memiliki konflik dengan kepentingan profesional:</i></font><br />
+                                    <font color="#251073"><i>Seorang karyawan yang juga merupakan bagian dari anggota rencana tabungan pensiun</i></font><br />
+                                    <font color="#251073"><i>(kepentingan pribadi) bertanggung jawab untuk mengambil keputusan mengenai apakah</i></font><br />
+                                    <font color="#251073"><i>anggota dana pensiun tersebut harus diberikan kompensasi bila terjadi kesalahan</i></font><br />
+                                    <font color="#251073"><i>(kepentingan profesional).</i></font><br /><br />
+                                    <b>Conflicts of Duty</b><br /><br />
+                                    It is also possible for an employee to have responsibilities or duties to more than one <br />
+                                    individual or group (for example, a manager who is also a Director of a company within a group).  <br />
+                                    This is called a conflict of duty. <br /><br />
+
+                                    If you believe you have either a conflict of interest or duty in the fulfilment of your role, <br />
+                                    you are required to declare this with us. <br /><br />
+
+                                    <b><font color="#251073"><i>Konflik dalam Tugas</i></font><br /><br /></b>
+                                    <font color="#251073"><i>Konflik dalam tugas terjadi ketika seorang karyawan memiliki tanggung jawab atau tugas</i></font><br />
+                                    <font color="#251073"><i>terhadap lebih dari satu orang atau suatu kelompok (contohnya, seorang manajer yang </i></font><br />
+                                    <font color="#251073"><i>juga memiliki posisi sebagai direktur perusahaan di dalam satu grup). Ini dinamakan</i></font><br />
+                                    <font color="#251073"><i>konflik dalam tugas.</i></font><br /><br />
+                                    <font color="#251073"><i>Jika Anda yakin bahwa Anda memiliki konflik kepentingan atau konflik dalam tugas pada</i></font><br />
+                                    <font color="#251073"><i>saat menyelesaikan tugas Anda, Anda diwajibkan untuk menyatakan hal tersebut kepada</i></font><br />
+                                    <font color="#251073"><i>perusahaan.</i></font><br /><br />
+
+                                </div>
+                                <div>
+                                    <b><font color="blue">Do you have a Conflict of Duty to declare?</font></b><br />
+                                    <b><font color="#251073"><i>Apakah Anda memiliki konflik kepentingan yang perlu dinyatakan?</i></font><br /><br /></b>
+                                </div>
+                                <div class="form-group">
+                                    <label style="padding-left:50px;">
+                                        @{
+                                            string Vis = "";
+                                            if (Model.CheckYesConf == true)
+                                            {
+                                                Vis = "checked";
+                                            }
+                                            else
+                                            {
+                                                Vis = "";
+                                            }
+                                        }
+                                        @{
+                                            string Vis2 = "";
+                                            if (Model.CheckNoConf == true)
+                                            {
+                                                Vis2 = "checked";
+                                            }
+                                            else
+                                            {
+                                                Vis2 = "";
+                                            }
+                                        }
+                                        <b>@Html.CheckBox("CheckYesConf", @Model.CheckYesConf == true ? true : false, new { id = "CheckYesConf" }) <font color="black">Yes</font> / <font color="#251073"><i>Ya</i></font></b><br /><br />
+                                        @Html.CheckBox("CheckNoConf", @Model.CheckNoConf == true ? true : false, new { id = "CheckNoConf" }) <b><font color="black">No</font> / <font color="#251073"><i>Tidak</i></font></b>
+                                        @*@Html.CheckBox("CheckNoConf", new { id = "CheckNoConf", style = "display:" + Vis2 + ";" }) <b><font color="black">No</font> / <font color="#251073"><i>Tidak</i></font></b>*@
+                                        &nbsp;
+                                        <b><font color="Red">@Model.CheckYesBehaveMessage</font></b>
+                                    </label>
+                                    <br />
+                                </div><br />
+                                <div>
+                                    Please give a brief description of the nature of interests involved if the response is <b>“YES”</b>. In your<br />
+                                    declaration, please provide names of any organizations or persons that are related or involved <br />
+                                    with your conflict of interest. Otherwise, enter “N/A” in the comment box if nothing to declare: <br /><br />
+                                    <font color="#251073"><i>Mohon memberikan deskripsi singkat mengenai dasar dari</i></font> <br />
+                                    <font color="#251073"><i>konflik kepentingan yang terkait jika</i></font><br />
+                                    <font color="#251073"><i>jawaban adalah <b>“Ya”</b> Di dalam pernyataan Anda, mohon memberikan nama – nama dari </i></font> <br />
+                                    <font color="#251073"><i>organisasi atau orang lain yang berkaitan dengan konflik kepentingan Anda. </i></font> <br />
+                                    <font color="#251073"><i>Silahkan memberikan jawaban <b>“N/A”</b> di kolom komentar jika tidak ada yang perlu dinyatakan.</i></font> <br />
+
+                                </div>
+                                <div class="form-group" id="DivCommentConf2" style="@Model.DivCommentConf2">
+                                    @if (Model.CheckYesConf == true)
+                                    {
+                                        <div class="form-group" id="DivCommentConf" style="display:inline">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Comment</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextArea("CommentConf", null, new { id = "CommentConf", style = "width: 300px; height:100px;" })
+                                                @*<textarea id="Comment" name="Comment" placeholder="Comment" class="col-xs-10 col-sm-5" />*@
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group" id="DivCommentConf" style="display:inline">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Comment</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextArea("CommentConf", null, new { id = "CommentConf", style = "width: 300px; height:100px;" })
+                                                @*<textarea id="Comment" name="Comment" placeholder="Comment" class="col-xs-10 col-sm-5" />*@
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+         
+                                <br /><br />
+                                <div style="margin-left:15px">
+                                    <button class="btn btn-sm btn-success" type="submit" name="submit" id="Submit" value="Submit" disabled="@Model.Disabled" style="margin-left:100px; height:40px; width:100px">
+                                        Submit
+                                    </button>
+                                    <button class="btn navbar-btn" type="submit" name="submit" id="back" value="Back" style="height:40px; width:100px; margin-left:30px; ">
+                                        Back
+                                    </button>
+                                    <button class="btn navbar-btn" type="submit" name="submit" id="Download" value="Download" disabled="@Model.DisabledDOWNLOAD" style="height:40px; width:100px; margin-left:30px; ">
+                                        Download
+                                    </button>
+                                </div><br />
+                                <div class="col-xs-12">
+                                    @Html.Raw(TempData["messageRequest"])
+                                    @Html.Raw(TempData["SuccessRequest"])
+                                    @Html.Raw(TempData["ErrorRequest"])
+                                   
+                                    <b><font color="Red">@Html.Raw(TempData["CountData"])</font></b>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                                            }
+<script src="~/assets/js/jquery-2.1.4.min.js"></script>
+@*<script src="~/assets/js/chosen.jquery.min.js"></script>*@
+@*<script src="~/assets/js/ace.min.js"></script>*@
+
+<script type="text/javascript">
+    $("#CheckNoPer").change(function () {
+        if (this.checked) {
+            document.getElementById("DivComment2").style.display = "inline";
+            $("#CheckYesPer").prop("checked", false);
+        } else {
+            var Comment = document.getElementById("Comment").value;
+            document.getElementById("DivComment2").style.display = "none";
+            $("#CheckYesPer").prop("checked", false);
+            if (document.getElementById("Comment").value != "")
+            {
+                document.getElementById("Comment").value = Comment;
+            }
+            else
+            {
+                document.getElementById("Comment").value = "";
+            }
+        }
+    });
+
+    $("#CheckYesPer").change(function () {
+        if (this.checked) {
+            var Comment = document.getElementById("Comment").value;
+            document.getElementById("DivComment2").style.display = "none";
+            $("#CheckNoPer").prop("checked", false);
+            if (document.getElementById("Comment").value != "") {
+                document.getElementById("Comment").value = Comment;
+            }
+            else {
+                document.getElementById("Comment").value = "";
+            }
+        } else {
+            $("#CheckNoPer").prop("checked", false);
+        }
+    });
+
+    $("#CheckNoConf").change(function () {
+        if (this.checked) {
+            var Comment = document.getElementById("CommentConf").value;
+            document.getElementById("DivCommentConf2").style.display = "none";
+            $("#CheckYesConf").prop("checked", false);
+            if (document.getElementById("CommentConf").value != "") {
+                document.getElementById("CommentConf").value = Comment;
+            }
+            else {
+                document.getElementById("CommentConf").value = "";
+            }
+        } else {
+            document.getElementById("DivCommentConf2").style.display = "inline";
+            $("#CheckYesConf").prop("checked", false);
+        }
+    });
+
+    $("#CheckYesConf").change(function () {
+        if (this.checked) {
+            document.getElementById("DivCommentConf2").style.display = "inline";
+            $("#CheckNoConf").prop("checked", false);
+        } else {
+            var Comment = document.getElementById("CommentConf").value;
+            $("#CheckNoConf").prop("checked", false);
+            if (document.getElementById("CommentConf").value != "") {
+                document.getElementById("CommentConf").value = Comment;
+            }
+            else {
+                document.getElementById("CommentConf").value = "";
+            }
+        }
+    });
+</script>
+
+<script>
+        $(function() {
+
+            $(".MyTreeView").find(":checkbox").change(function() {
+                //check or uncheck childs
+                var nextele = $(this).closest("table").next()[0];
+                if (nextele && nextele.tagName == "DIV") {
+                    $(nextele).find(":checkbox").prop("checked", $(this).prop("checked"));
+
+                }
+                //check nodes all with the recursive method
+                CheckChildNodes($(".MyTreeView").find(":checkbox").first());
+
+            });
+            //method check filial nodes
+            function CheckChildNodes(Parentnode) {
+
+                var nextele = $(Parentnode).closest("table").next()[0];
+
+                if (nextele && nextele.tagName == "DIV") {
+                    $(nextele).find(":checkbox").each(function() {
+                        CheckChildNodes($(this));
+                    });
+
+                    if ($(nextele).find("input:checked").length == 0) {
+                        $(Parentnode).removeAttr("checked");
+                    }
+                    if ($(nextele).find("input:checked").length > 0) {
+                        $(Parentnode).prop("checked", "checked");
+                    }
+
+                }
+                else { return; }
+
+            }
+
+        })
+</script>
+<script type="text/javascript">
+        (function($) {
+            $.widget("custom.combobox", {
+                _create: function() {
+                    this.wrapper = $("<span>")
+          .addClass("custom-combobox")
+          .insertAfter(this.element);
+
+                    this.element.hide();
+                    this._createAutocomplete();
+                    this._createShowAllButton();
+                },
+
+                _createAutocomplete: function() {
+                    var selected = this.element.children(":selected"),
+          value = selected.val() ? selected.text() : "";
+
+                    this.input = $("<input>")
+          .appendTo(this.wrapper)
+          .val(value)
+          .attr("title", "")
+          .addClass("custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left")
+          .autocomplete({
+              delay: 0,
+              minLength: 0,
+              source: $.proxy(this, "_source")
+          })
+          .tooltip({
+              tooltipClass: "ui-state-highlight"
+          });
+
+                    this._on(this.input, {
+                        autocompleteselect: function(event, ui) {
+                            ui.item.option.selected = true;
+                            this._trigger("select", event, {
+                                item: ui.item.option
+                            });
+                        },
+
+                        autocompletechange: "_removeIfInvalid"
+                    });
+                },
+
+                _createShowAllButton: function() {
+                    var input = this.input,
+          wasOpen = false;
+
+                    $("<a>")
+          .attr("tabIndex", -1)
+          .attr("title", "Show All Items")
+          .tooltip()
+          .appendTo(this.wrapper)
+          .button({
+              icons: {
+                  primary: "ui-icon-triangle-1-s"
+              },
+              text: false
+          })
+          .removeClass("ui-corner-all")
+          .addClass("custom-combobox-toggle ui-corner-right")
+          .mousedown(function() {
+              wasOpen = input.autocomplete("widget").is(":visible");
+          })
+          .click(function() {
+              input.focus();
+
+              // Close if already visible
+              if (wasOpen) {
+                  return;
+              }
+
+              // Pass empty string as value to search for, displaying all results
+              input.autocomplete("search", "");
+          });
+                },
+
+                _source: function(request, response) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                    response(this.element.children("option").map(function() {
+                        var text = $(this).text();
+                        if (this.value && (!request.term || matcher.test(text)))
+                            return {
+                                label: text,
+                                value: text,
+                                option: this
+                            };
+                    }));
+                },
+
+                _removeIfInvalid: function(event, ui) {
+
+                    // Selected an item, nothing to do
+                    if (ui.item) {
+                        return;
+                    }
+
+                    // Search for a match (case-insensitive)
+                    var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+                    this.element.children("option").each(function() {
+                        if ($(this).text().toLowerCase() === valueLowerCase) {
+                            this.selected = valid = true;
+                            return false;
+                        }
+                    });
+
+                    // Found a match, nothing to do
+                    if (valid) {
+                        return;
+                    }
+
+                    // Remove invalid value
+                    this.input
+          .val("")
+          .attr("title", value + " didn't match any item")
+          .tooltip("open");
+                    this.element.val("");
+                    this._delay(function() {
+                        this.input.tooltip("close").attr("title", "");
+                    }, 2500);
+                    this.input.data("ui-autocomplete").term = "";
+                },
+
+                _destroy: function() {
+                    this.wrapper.remove();
+                    this.element.show();
+                }
+            });
+        })(jQuery);
+
+        $(function() {
+            $("#Dept").combobox();
+            $("#toggle").click(function() {
+                $("#Dept").toggle();
+            });
+        });
+</script>
+<link href="~/assets/css/Drop.css" rel="stylesheet" />
+<script>
+jQuery.noConflict();
+</script>

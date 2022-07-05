@@ -1,0 +1,238 @@
+﻿@model Annual_Compliance_Declaration.Models.Compliance.AddCompliance
+@using (Html.BeginForm("AddCompliance", "Compliance", FormMethod.Post))
+{
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">Admin</a>
+                </li>
+                <li class="active">Add Annual Compliance</li>
+            </ul><!-- /.breadcrumb -->
+            @*<div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div>*@<!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="ace-settings-container" id="ace-settings-container">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="ace-icon fa fa-cog bigger-130"></i>
+                </div>
+
+                <div class="ace-settings-box clearfix" id="ace-settings-box">
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <div class="pull-left">
+                                <select id="skin-colorpicker" class="hide">
+                                    <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                    <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                    <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                    <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                </select><div class="dropdown dropdown-colorpicker"><a data-toggle="dropdown" class="dropdown-toggle"><span class="btn-colorpicker" style="background-color:#438EB9"></span></a><ul class="dropdown-menu dropdown-caret"><li><a class="colorpick-btn selected" style="background-color:#438EB9;" data-color="#438EB9"></a></li><li><a class="colorpick-btn" style="background-color:#222A2D;" data-color="#222A2D"></a></li><li><a class="colorpick-btn" style="background-color:#C6487E;" data-color="#C6487E"></a></li><li><a class="colorpick-btn" style="background-color:#D0D0D0;" data-color="#D0D0D0"></a></li></ul></div>
+                            </div>
+                            <span>&nbsp; Choose Skin</span>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off">
+                            <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off">
+                            <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off">
+                            <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off">
+                            <label class="lbl" for="ace-settings-add-container">
+                                Inside
+                                <b>.container</b>
+                            </label>
+                        </div>
+                    </div><!-- /.pull-left -->
+
+                    <div class="pull-left width-50">
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off">
+                            <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off">
+                            <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                        </div>
+
+                        <div class="ace-settings-item">
+                            <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off">
+                            <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                        </div>
+                    </div><!-- /.pull-left -->
+                </div><!-- /.ace-settings-box -->
+            </div><!-- /.ace-settings-container -->
+
+            <div class="page-header">
+                <h1>
+                    Compliance
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Add Annual Compliance
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102px;"> Employee ID </label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" id="NIK" name="NIK" placeholder="EmployeeID" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeID" disabled="disabled">
+                                        @*<input type="text" id="NIK" name="NIK" placeholder="NIK" class="col-xs-10 col-sm-5" style="width: 110px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102px;"> Employee Name </label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" id="Name" name="Name" placeholder="EmployeeName" class="col-xs-10 col-sm-5" style="width: 310px;" value="@Model.EmployeeName" disabled="disabled">
+                                        @*<input type="text" id="Name" name="Name" placeholder="Name" class="col-xs-10 col-sm-5" style="width: 300px;">*@
+                                    </div>
+                                </div><br /><br />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Department</label>
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(model => model.DepartmentID, Model.Department, new { id = "Dept", @class = "form-control" })
+                                    </div>
+                                </div><br /><br />
+                               
+                                <br /><br />
+
+                                <div class="table-header">
+                                    Annual Compliance Declaration
+                                </div><br />
+                                <div>
+                                    <b>PT. AXA Services Indonesia Compliance and Ethics Manual for Employees</b><br /><br />
+                                    This declaration is for you to confirm that you have read and understood PT. AXA Services <br />
+                                    Indonesia Compliance and Ethics Manual for Employees. You confirm that you do act in <br />
+                                    accordance with the policies and guidelines described in the Manual. <br /><br />
+                                    <i><font color="#251073"><b>Pedoman Kepatuhan dan Etika PT. AXA Services Indonesia untuk Karyawan</b></font></i><br /><br />
+                                    <i>
+                                        <font color="#251073">
+                                            Pernyataan untuk Karyawan ini adalah untuk menyatakan bahwa Anda telah membaca dan <br />
+                                            mengerti Pedoman Kepatuhan dan Etika PT. AXA Services Indonesia untuk Karyawan. Dan Anda <br />
+                                            menyatakan bahwa Anda telah berperilaku sesuai dengan peraturan dan kebijakan yang tertulis <br />
+                                            di dalam buku pedoman tersebut.
+                                        </font>
+                                    </i> <br /><br />
+                                    <b>
+                                        <font color="blue">
+                                            I confirm that I have read and understood PT. AXA Services Indonesia Compliance <br />
+                                            and Ethics Manual for Employees.
+                                        </font>
+                                    </b> <br /><br />
+                                    <i>
+                                        <font color="#251073">
+                                            <b>
+                                                Saya menyatakan bahwa saya sudah membaca dan mengerti Pedoman Kepatuhan <br />
+                                                dan Etika PT. AXA Services Indonesia untuk Karyawan.
+                                            </b>
+                                        </font>
+                                    </i><br /><br />
+                                    <b>
+                                        <font color="blue">
+                                            I confirm that I do act in accordance with the policies and guidelines described in <br />
+                                            that Manual.
+                                        </font>
+                                    </b><br /><br />
+                                    <i>
+                                        <font color="#251073">
+                                            <b>
+                                                Saya menyatakan bahwa saya berperilaku sesuai dengan peraturan dan kebijakan <br />
+                                                yang tertulis dalam buku pedoman tersebut.
+                                            </b>
+                                        </font>
+                                    </i><br /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label style="padding-left:50px;">
+                                        <b>@Html.CheckBox("CheckYesPer", false, new { id = "CheckYesPer" }) <font color="black">Yes</font> / <font color="#251073"><i>Ya</i></font></b><br /><br />
+                                        @Html.CheckBox("CheckNoPer") <b><font color="black">No</font> / <font color="#251073"><i>Tidak</i></font></b>
+                                    </label>
+                                <br />
+                                </div><br />
+                                <div>
+                                    Please provide the reason(s) if the response is <font color="black">“No”.</font> Otherwise, entire “N/A” in the comment box:<br /><br />
+                                    <i>
+                                        <font color="blue">
+                                            Mohon memberikan alasannya jika jawaban adalah “Tidak”. Jika bukan, silahkan memberikan <br />
+                                            jawaban “N/A” di kolom komentar:
+                                        </font>
+                                    </i>
+                                </div>
+                                <div class="form-group" id="DivComment" name="DivComment" style="display:none">
+                                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1" style="width: 102;">Comment</label>
+                                        <div class="col-sm-9">
+                                            <textarea id="Comment" name="Comment" placeholder="Comment" class="col-xs-10 col-sm-5" />
+                                        </div>
+                                </div>
+
+                                <div style="margin-left:15px">
+                                    <button class="btn btn-sm btn-success" type="submit" name="submit" id="Submit" value="Submit" style="margin-left:100px; height:40px; width:100px">
+                                         Submit
+                                    </button>
+                                    <button class="btn navbar-btn" type="submit" name="submit" id="back" value="back" style="height:40px; width:100px; margin-left:30px; ">
+                                        back
+                                    </button>
+                                </div><br />
+                            </form>
+                           
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+}
+<script src="~/assets/js/jquery-2.1.4.min.js"></script>
+@*<script src="~/assets/js/chosen.jquery.min.js"></script>*@
+@*<script src="~/assets/js/ace.min.js"></script>*@
+
+<script type="text/javascript">
+    $("#CheckNoPer").change(function () {
+        debugger;
+        alert("tes");
+        //var x = document.getElementById("DivComment");
+        //if (this.checked) {
+        //    x.style.display = "normal";
+        //} else {
+        //    x.style.display = "none";
+        //}
+    });
+</script>
